@@ -32,4 +32,4 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            quay.io/rh-ee-dholder/otel-logging-demo:latest:latest
+            quay.io/rh-ee-dholder/otel-logging-demo:latest
