@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"log"
+	"log/slog"
 	"math"
 	"math/rand"
 	"strings"
@@ -26,7 +26,7 @@ var currencies = []string{"USD", "EUR", "GBP", "JPY", "AUD", "CAD"}
 
 func main() {
 
-	log.Println("--- Transaction Logger Started ---")
+	slog.Info("--- Transaction Logger Started ---")
 
 	for {
 		// Generate a new random transaction
@@ -35,12 +35,12 @@ func main() {
 		// Marshal the transaction struct into JSON format
 		jsonData, err := json.Marshal(tx)
 		if err != nil {
-			log.Printf("Error marshaling transaction to JSON: %v", err)
+			slog.Error("Error marshaling transaction to JSON:", err)
 			continue
 		}
 
 		// Log the JSON string
-		log.Println(string(jsonData))
+		slog.Info(string(jsonData))
 
 		// Wait for a random duration (500ms - 3s) before the next transaction
 		sleepDuration := time.Duration(rand.Intn(2500)+500) * time.Millisecond
